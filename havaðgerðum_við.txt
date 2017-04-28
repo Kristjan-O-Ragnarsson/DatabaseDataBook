@@ -2,13 +2,13 @@
 Kristján: Git,
 Hjálpaði við hönnun Gagnargrunsins
 ----------------------------
-Guðmundur:
+Guðmundur:Hannaði Gagnagrunin, Setti upp Gagnagrunin
 
 
 ---  28/04 ----------------------
-Kristján:
+Kristján: Bjó til Uplysingar fyrir gagnagrunin
 ----------------------------
-Guðmundur:
+Guðmundur:Bjó til Uplysingar fyrir gagnagrunin
 
 
 ---  02/05 ----------------------
