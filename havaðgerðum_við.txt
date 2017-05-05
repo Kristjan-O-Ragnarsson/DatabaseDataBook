@@ -1,4 +1,4 @@
----  25/04 ----------------------
+﻿---  25/04 ----------------------
 Kristján: Git,
 Hjálpaði við hönnun Gagnargrunsins
 ----------------------------
@@ -12,12 +12,12 @@ Guðmundur:Bjó til Uplysingar fyrir gagnagrunin
 
 
 ---  02/05 ----------------------
-Kristján:
+Kristján: bætti við frekar lítið af upplysingum
 ----------------------------
-Guðmundur:
+Guðmundur: bætti við frekar lítið af upplysingum
 
 
 ---  05/05 ----------------------
-Kristján:
+Kristján: byrjaði og næstum klárai fyrirspurnirnar
 ----------------------------
 Guðmundur:

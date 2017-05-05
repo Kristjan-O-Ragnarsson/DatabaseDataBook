@@ -1,0 +1,82 @@
+SELECT nafn
+FROM lag
+WHERE diskur_id = 3
+--------------------------------
+select lag.nafn
+from lag 
+inner join lag_fly
+on lag.ID = lag_fly.lag_id
+where lag_fly.flytjandi_id = 7
+--------------------------------
+select lag.nafn
+from lag 
+inner join diskur
+on lag.diskur_id = diskur.ID
+where diskur.tegund_disks = 5
+--------------------------------
+select nafn
+from lag 
+where lengd like '[!1-5]___'
+--------------------------------
+select nafn
+from diskur
+where utgafudagur >= '2010-01-01' 
+--------------------------------
+f)
+--------------------------------
+select lag.nafn, flytjandi.nafn, utgefandi.nafn, lag.lengd
+from lag
+inner join lag_fly
+on lag.ID = lag_fly.lag_id
+inner join flytjandi
+on flytjandi.ID = lag_fly.flytjandi_id
+inner join diskur
+on lag.diskur_id = diskur.ID
+inner join utgefandi
+on diskur.utegefandi = utgefandi.ID 
+order by CONVERT(lag.lengd, TIME) DESC
+limit 0, 5
+--------------------------------
+select tegund.nafn as "Tegund", count(diskur.ID) as "Fjöldi diska"
+from diskur
+inner join tegund
+on tegund.ID = diskur.tegund_disks
+Group by tegund.nafn
+order by count(diskur.id) DESC
+limit 0, 2
+--------------------------------
+select utgefandi.nafn as "Útgefandi", count(diskur.utegefandi) as "Fjöldi diska"
+from diskur
+inner join utgefandi
+on utgefandi.ID = diskur.utegefandi
+Group by utgefandi.nafn
+order by count(diskur.utegefandi)
+limit 0, 1
+--------------------------------
+select diskur.nafn, tegund.nafn, utgefandi.nafn
+from diskur
+inner join tegund
+on tegund.ID = diskur.tegund_disks
+inner join utgefandi
+on utgefandi.ID = diskur.utegefandi
+where diskur.utgafudagur between '1998-01-01' and '2017-01-01'
+order by utgefandi.nafn
+--------------------------------
+select count(ID)
+from lag
+where nafn like 'A%' or nafn like '%s%'
+--------------------------------
+
+--------------------------------
+
+--------------------------------
+select count(flytjandi.nafn)
+from flytjandi
+inner join lag_fly
+on flytjandi.ID = lag_fly.flytjandi_id
+inner join lag
+on lag.ID = lag_fly.lag_id
+where count(lag.nafn) > 4
+--------------------------------
+
+--------------------------------
