@@ -22,7 +22,16 @@ select nafn
 from diskur
 where utgafudagur >= '2010-01-01' 
 --------------------------------
-f)
+select diskur.nafn as "Diskur", flytjandi.nafn as "Höfundur", diskur.utgafudagur, utgefandi.nafn
+from lag
+inner join lag_fly
+on lag.ID = lag_fly.lag_id
+inner join flytjandi
+on flytjandi.ID = lag_fly.flytjandi_id
+inner join diskur
+on diskur.ID = lag.diskur_id
+inner join utgefandi
+on utgefandi.ID = diskur.utegefandi
 --------------------------------
 select lag.nafn, flytjandi.nafn, utgefandi.nafn, lag.lengd
 from lag
@@ -37,7 +46,7 @@ on diskur.utegefandi = utgefandi.ID
 order by CONVERT(lag.lengd, TIME) DESC
 limit 0, 5
 --------------------------------
-select tegund.nafn as "Tegund", count(diskur.ID) as "Fj�ldi diska"
+select tegund.nafn as "Tegund", count(diskur.ID) as "Fjöldi diska"
 from diskur
 inner join tegund
 on tegund.ID = diskur.tegund_disks
@@ -45,7 +54,7 @@ Group by tegund.nafn
 order by count(diskur.id) DESC
 limit 0, 2
 --------------------------------
-select utgefandi.nafn as "�tgefandi", count(diskur.utegefandi) as "Fj�ldi diska"
+select utgefandi.nafn as "Útgefandi", count(diskur.utegefandi) as "Fjöldi diska"
 from diskur
 inner join utgefandi
 on utgefandi.ID = diskur.utegefandi
@@ -66,9 +75,12 @@ select count(ID)
 from lag
 where nafn like 'A%' or nafn like '%s%'
 --------------------------------
+select flytjandi.nafn as "Höfundur", flytjandi.aldur
+from flytjandi
 
 --------------------------------
-
+select avg(lag.lengd)
+from lag
 --------------------------------
 select count(flytjandi.nafn)
 from flytjandi
@@ -78,5 +90,14 @@ inner join lag
 on lag.ID = lag_fly.lag_id
 where count(lag.nafn) > 4
 --------------------------------
-
+select flytjandi.nafn as "Höfundur", lag.nafn
+from lag
+inner join lag_fly
+on lag.ID = lag_fly.lag_id
+inner join flytjandi
+on flytjandi.ID = lag_fly.flytjandi_id
+inner join diskur
+on diskur.ID = lag.diskur_id
+group by diskur.nafn
+where flytjandi.ID = 10
 --------------------------------
